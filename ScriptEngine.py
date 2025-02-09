@@ -8,8 +8,7 @@ import tkinter as tk
 from tkinter import filedialog
 import json
 
-# Импортируем нужные классы и функции
-from utils.gamewindow import size  # Предположим, что этот модуль существует и предоставляет размер окна
+from utils.gamewindow import size 
 
 
 class ResourceManager:
@@ -22,7 +21,6 @@ class ResourceManager:
         with open(data_file, 'rb') as f:
             self.resources = pickle.load(f)
 
-        # Загрузите MANIFEST
         self.load_manifest()
 
         print("Loaded resources:", self.resources.keys())
@@ -83,7 +81,6 @@ class RoomManager:
             except (KeyError, ValueError) as e:
                 print(f"Error loading script {script_path}: {e}")
 
-        # Сохраняем модули для текущей комнаты
         self.modules[self.current_room] = loaded_modules
 
     def get_current_room_modules(self):
