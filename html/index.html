@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Welcome to PyroForge Game Engine Documentation &#8212; PyroForge-Script-Engine non documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=dab5bb8e"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="welcome-to-pyroforge-game-engine-documentation">
+<h1>Welcome to PyroForge Game Engine Documentation<a class="headerlink" href="#welcome-to-pyroforge-game-engine-documentation" title="Link to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<p>Script Engine for the PyroForge - Game Engine - SNAPSHOT</p>
+<p>For writing scripts in the future, you can use the examples provided in the documentation.</p>
+</section>
+<section id="hello-world-script">
+<h2>Hello World Script<a class="headerlink" href="#hello-world-script" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print Hello World Script</span>
+
+<span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>   <span class="c1"># &lt;- script function</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span> <span class="c1"># &lt;- print terminal message</span>
+<span class="n">hello_world</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print Hello World Given that</span>
+
+<span class="kn">import</span> <span class="nn">pygame</span> <span class="c1"># - import PyGame Lib (py -m pip install pygame)</span>
+
+<span class="n">enter_pressed</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># - check status</span>
+
+<span class="k">def</span> <span class="nf">handle_event</span><span class="p">(</span><span class="n">event</span><span class="p">):</span> <span class="c1"># &lt;- script function</span>
+    <span class="k">global</span> <span class="n">enter_pressed</span> <span class="c1"># &lt;- Setting the main variable</span>
+    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">KEYDOWN</span><span class="p">:</span> <span class="c1"># &lt;- Checking if the keyboard is in use</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">K_RETURN</span><span class="p">:</span> <span class="c1">#Checking if the Enter key is pressed</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">enter_pressed</span><span class="p">:</span> <span class="c1"># &lt;- Since at the beginning the status is False, this means that Enter was not pressed</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span> <span class="c1"># &lt;- print</span>
+                <span class="n">enter_pressed</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># &lt;- showing that the action has been completed</span>
+    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">KEYUP</span><span class="p">:</span> <span class="c1"># &lt;- Checking whether the key is released</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">pygame</span><span class="o">.</span><span class="n">K_RETURN</span><span class="p">:</span>
+            <span class="n">enter_pressed</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># - if it was Enter, return the False flag to complete execution and wait for the next press</span>
+</pre></div>
+</div>
+</section>
+<section id="play-sound-script">
+<h2>Play Sound Script<a class="headerlink" href="#play-sound-script" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygame</span>  <span class="c1"># - import PyGame Lib</span>
+
+<span class="kn">from</span> <span class="nn">utils.res.ResourceManager</span> <span class="kn">import</span> <span class="n">resource_manager</span> <span class="c1"># &lt;- Import ResManager util</span>
+
+<span class="n">sound_played</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># - Check status</span>
+
+<span class="k">def</span> <span class="nf">play_sound</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>  <span class="c1"># &lt;- script function</span>
+    <span class="k">global</span> <span class="n">sound_played</span>  <span class="c1"># &lt;- Setting the main variable</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">sound_played</span><span class="p">:</span>  <span class="c1"># &lt;- checking whether the sound was played, if not then play it</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">pygame</span><span class="o">.</span><span class="n">mixer</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+            <span class="n">sound</span> <span class="o">=</span> <span class="n">resource_manager</span><span class="o">.</span><span class="n">get_sound</span><span class="p">(</span><span class="s1">&#39;Sounds</span><span class="se">\\</span><span class="s1">SoundExample.wav&#39;</span><span class="p">)</span>
+            <span class="n">sound</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+            <span class="n">sound_played</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="draw-red-square">
+<h2>Draw Red Square<a class="headerlink" href="#draw-red-square" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygame</span> <span class="c1"># - import PyGame Lib</span>
+<span class="kn">from</span> <span class="nn">utils.gamewindow</span> <span class="kn">import</span> <span class="n">size</span> <span class="c1"># &lt;- set the parameters of the window we will access</span>
+
+<span class="n">square</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">Surface</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span> <span class="c1"># &lt;- call square</span>
+<span class="n">square</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="s2">&quot;Red&quot;</span><span class="p">)</span> <span class="c1"># &lt;- Set the full color to the square (Red)</span>
+
+<span class="k">def</span> <span class="nf">redSquare</span><span class="p">(</span><span class="n">event</span><span class="p">):</span> <span class="c1"># &lt;- Script function</span>
+    <span class="n">size</span><span class="o">.</span><span class="n">window_size</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">square</span><span class="p">,</span> <span class="p">(</span><span class="mi">295</span><span class="p">,</span> <span class="mi">220</span><span class="p">))</span> <span class="c1"># &lt;- draw a square on the coordinates, that is, in the center</span>
+    <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span> <span class="c1"># &lt;- screen update</span>
+</pre></div>
+</div>
+</section>
+<section id="draw-blue-circle">
+<h2>Draw Blue Circle<a class="headerlink" href="#draw-blue-circle" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygame</span> <span class="c1"># - import PyGame Lib</span>
+<span class="kn">from</span> <span class="nn">utils.gamewindow</span> <span class="kn">import</span> <span class="n">size</span> <span class="c1"># &lt;- set the parameters of the window we will access</span>
+
+<span class="k">def</span> <span class="nf">bluecircle</span><span class="p">(</span><span class="n">event</span><span class="p">):</span> <span class="c1"># &lt;- Script function</span>
+    <span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">window_size</span><span class="p">,</span> <span class="s1">&#39;Blue&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">220</span><span class="p">),</span> <span class="mi">50</span><span class="p">)</span> <span class="c1"># &lt;-draw a blue circle figure</span>
+    <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span> <span class="c1"># &lt;- screen update</span>
+</pre></div>
+</div>
+</section>
+<section id="background-image">
+<h2>Background Image<a class="headerlink" href="#background-image" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygame</span> <span class="c1"># &lt;- import PyGame Lib</span>
+<span class="kn">from</span> <span class="nn">utils.gamewindow</span> <span class="kn">import</span> <span class="n">size</span> <span class="c1"># &lt;- Load utils game window</span>
+
+<span class="kn">from</span> <span class="nn">utils.res.ResourceManager</span> <span class="kn">import</span> <span class="n">resource_manager</span> <span class="c1"># &lt;- Import ResManager Util</span>
+
+<span class="n">bg</span> <span class="o">=</span> <span class="n">resource_manager</span><span class="o">.</span><span class="n">get_image</span><span class="p">(</span><span class="s2">&quot;Images</span><span class="se">\\</span><span class="s2">bg.png&quot;</span><span class="p">)</span> <span class="c1"># &lt;- Load background image</span>
+
+<span class="k">def</span> <span class="nf">background_script</span><span class="p">(</span><span class="n">event</span><span class="p">):</span> <span class="c1"># &lt;- Script function</span>
+    <span class="n">size</span><span class="o">.</span><span class="n">window_size</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">bg</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="c1"># &lt;- Draw background</span>
+</pre></div>
+</div>
+</section>
+<section id="utils">
+<h2>Utils<a class="headerlink" href="#utils" title="Link to this heading">¶</a></h2>
+<p>___Utils___</p>
+<ul>
+<li><p><strong>from utils.gamewindow.size</strong> &lt;- A utility that allows you to adjust the window size;
+importing it will lead to setting the window size from the window_size variable
+(Yes, it’s useless, but I left it for my personal use, you can write a script for this)</p></li>
+<li><p><strong>from utils.res.ResourceManager import resource_manager</strong> &lt;- A utility used to download the necessary resources from data.win
+for example:
+In data.win we have a resource bg.png and we need to output it to the pygame window
+We set a variable that is equal to resource_manager.get_image(“Images\bg.png”) and thus load the image from data.win
+since the utility suspects that when using get_image, the key from the data.win file will be used to load and execute it</p>
+<p>The utility also has several more Functions:
+- get_image() &lt;- Used to load image type resources
+- get_sound() &lt;- Used when loading sound type resources
+- get_font() &lt;- used when loading files with .ttf format and suspects that they are of the Fonts type
+- get_resource() &lt;- used to download the required file types sounds, images, fonts
+- load_resource() &lt;- check for reading and loading files, if there is a resource then the output is True or False</p>
+</li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">PyroForge-Script-Engine</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, McCDcardGuy.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.4.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

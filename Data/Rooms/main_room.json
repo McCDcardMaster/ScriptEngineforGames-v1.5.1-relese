@@ -1,0 +1,7 @@
+{
+	"scripts": [
+		"Scripts\\ExampleBackGroundScript.py",
+		"Scripts\\ExampleIconScript.py",
+		"Scripts\\ExamplePlaySoundScript.py"
+	]
+}

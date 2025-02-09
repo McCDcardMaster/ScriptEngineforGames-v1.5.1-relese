@@ -1,0 +1,80 @@
+			CHANGELOG FILE
+======================================
+Version 1.5 contains multiple changes
+
+		(ScriptEngine_v1.5.1-prerelese 1)
+
+1. constructor.bat has been changed (Added VERSION var)
+
+1.1 - For data.win created new folder "datafiles" in build dir
+
+1.2 - GkeyGenirator added inside ConstructorTasksScript.py file
+
+1.3 - Now build.spec setup ico file on your .EXE application
+
+1.4 - ScriptEngine.py now have executable parameter: 
+	"-game=" <- example: 
+		py ScriptEngine.py -game="path\to\.win\file" or:
+			Runner.exe -game="path\to\.win\file"
+		
+1.5 - ResourceManager util has been update!
+
+2. The "Compile" task has been removed.
+
+2.1 - Added "RunGame" task <- For debug and starting win file
+
+2.2 - Added "GAME_PARAM" in "build.spec" for RunGame this path to your data.win
+
+2.3 - Libloader now loads libraries
+        into the site-packages folder
+        to avoid errors with SDL
+
+2.4 - Removing the ".constructorTemp" folder due to being unnecessary
+
+2.5 - constructor.bat changed again
+     to remove the creation of .constructorTemp
+
+3 - added dependencies.settings file,
+    which will allow you to install any other libraries
+        when building the project
+
+3.1 - Removed installation of buildozer library
+
+3.2 - constructor-wrapper has been changed! 
+		The library loading system has been changed, 
+		which means that now the constructorUtil file, 
+		which is responsible for searching for the folder with 
+		constructor and version, 
+		will be located in the current directory
+		
+3.3 - Based on this prerelease, 
+		the wrapper will no longer work correctly 
+			on older versions: 
+			1.5.1 prerelese, 1.4, 1.3, 1.2, 1.1, 1.0 
+				(1.0 does not have a constructor)
+		The same applies to patches of these versions.
+		
+	(ScriptEngine_v1.5.1-prerelese 2)
+	
+3.4 - Added test room system:
+		Now Rooms have main_room.json filse
+			him load and exec scripts
+		You can create yours rooms and use them room_goto() from room_manager
+		
+3.5 - File "index.rst.txt" has been edited ;)
+
+	(ScriptEngine_v1.5.1-relese)
+
+4 - The compilation system has been changed
+
+4.1 - The !META-INF folder is now actually used
+
+4.2 - Changed file reading system ScriptEngine, ResourceManager
+
+4.3 - Changed decompilation system
+
+4.4 - Constructor has been updated to version 1.7
+
+That's all, see you soon! - @McCDcardMaster
+(If I don't abandon this script engine...)
+======================================
